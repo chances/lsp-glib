@@ -4,10 +4,19 @@ project(
   version: '0.1.0'
 )
 
+vapi_dir = meson.current_source_dir() / 'vapi'
+
 # subdir('src')
 
-jsonrpc_glib_proj = subproject('jsonrpc-glib')
+jsonrpc_glib_proj = subproject('jsonrpc-glib', default_options: [
+  'with_introspection=true',
+  'with_vapi=true',
+  'enable_gtk_doc=false',
+  'enable_tests=false'
+])
 libjsonrpc_glib_dep = jsonrpc_glib_proj.get_variable('libjsonrpc_glib_dep')
+libjsonrpc_glib_vapi = jsonrpc_glib_proj.get_variable('libjsonrpc_glib_vapi')
+libjsonrpc_glib_vapi_dir = meson.current_build_dir() / 'subprojects' / 'jsonrpc-glib' / 'src'
 
 add_project_arguments([
     '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name())
@@ -16,11 +25,7 @@ add_project_arguments([
 )
 
 add_project_arguments(
-  [
-    '--vapidir', join_paths(meson.current_source_dir(), 'vapi'),
-    '--vapidir', join_paths(meson.current_build_dir(), 'subprojects', 'jsonrpc-glib', 'src'),
-    '--pkg', 'jsonrpc-glib-1.0'
-  ],
+  ['--vapidir', vapi_dir],
   language: 'vala'
 )
 
@@ -29,6 +34,7 @@ executable(
   'src/server/LanguageServer.vala',
   dependencies: [
     libjsonrpc_glib_dep,
+    libjsonrpc_glib_vapi,
     dependency('json-glib-1.0'),
     dependency('gio-unix-2.0'),
   ],

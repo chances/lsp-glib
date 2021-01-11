@@ -7,12 +7,14 @@ PACKAGE_VERSION := 0.1.0
 .DEFAULT_GOAL := build/llc.snow.lsp
 all: build/llc.snow.lsp
 
-build/llc.snow.lsp: $(SOURCES)
+build/build.ninja:
 	meson build
-	@cd build && ninja
+
+build/llc.snow.lsp: $(SOURCES) build/build.ninja
+	ninja -C build
 
 install: build/llc.snow.lsp
-	@cd build && ninja install
+	ninja -C build install
 .PHONY: install
 
 test:
