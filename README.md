@@ -30,4 +30,4 @@ For more information about using the `DebugAdapterClient` / `DebugAdapterServer`
 
 [MIT License](https://opensource.org/licenses/MIT)
 
-Copyright &copy; 2021 Chance Snow. All rights reserved.
+Copyright &copy; 2021 Snow Developments, LLC. All rights reserved.

@@ -4,6 +4,8 @@ project(
   version: '0.1.0'
 )
 
+# subdir('src')
+
 jsonrpc_glib_proj = subproject('jsonrpc-glib')
 libjsonrpc_glib_dep = jsonrpc_glib_proj.get_variable('libjsonrpc_glib_dep')
 
