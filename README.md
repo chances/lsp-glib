@@ -8,11 +8,13 @@ An implementation of the [Language Server Protocol](https://github.com/Microsoft
 # Concepts
 
 ## JSON-RPC
-We have an implementation of JSON-RPC designed to implement the [JSON-RPC](https://www.jsonrpc.org/specification) as correctly as possible.
+
+We use the [jsonrpc-glib](https://gitlab.gnome.org/GNOME/jsonrpc-glib) implementation of [JSON-RPC](https://www.jsonrpc.org/specification).
 
 <!-- For more information about using the `JsonRpcServer` on it's own [here](./docs/jsonrpc.md). -->
 
 ## Language Server Protocol
+
 We strive to ensure that we implement all the types, request and notifications that are defined by the [Language Server Protocol](https://microsoft.github.io/language-server-protocol/). Sometimes this is difficult due to the nature of LSP TypeScript upbringing, but the goal is 100% conformance with the protocol itself.
 
 <!-- For more information about using the `LanguageClient` / `LanguageServer` on it's own [here](./docs/lsp.md). -->
