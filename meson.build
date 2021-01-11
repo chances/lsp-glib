@@ -16,7 +16,6 @@ jsonrpc_glib_proj = subproject('jsonrpc-glib', default_options: [
 ])
 libjsonrpc_glib_dep = jsonrpc_glib_proj.get_variable('libjsonrpc_glib_dep')
 libjsonrpc_glib_vapi = jsonrpc_glib_proj.get_variable('libjsonrpc_glib_vapi')
-libjsonrpc_glib_vapi_dir = meson.current_build_dir() / 'subprojects' / 'jsonrpc-glib' / 'src'
 
 add_project_arguments([
     '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name())
