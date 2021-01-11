@@ -1,0 +1,38 @@
+name: Vala LSP CI
+
+on: [push, pull_request]
+#   schedule:
+#   - cron: '0 0 * * SUN'
+
+jobs:
+  test:
+    name: Tests
+
+    runs-on: ubuntu-latest
+
+    container:
+      image: elementary/docker:stable
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install Dependencies
+      if: runner.os == 'Linux'
+      run: |
+        apt update
+        apt install -y
+    # TODO: Lint Vala sources
+    # - name: Lint
+    #   run: dub lint
+    - name: Build
+      # env:
+      #   DESTDIR: out
+      run: |
+        meson build
+        ninja -C build
+        ninja -C build install
+    # TODO: Run tests
+    # - name: Test
+    #   run: dub test --parallel --coverage
+    # - name: Upload Coverage to Codecov
+    #   if: success()
+    #   run: bash <(curl -s https://codecov.io/bash)
