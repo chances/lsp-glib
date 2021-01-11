@@ -26,6 +26,11 @@ docs:
 	#TODO: Write documentation
 .PHONY: docs
 
+# https://www.debian.org/doc/debian-policy
+package:
+	#TODO: Make a debian package
+.PHONY: package
+
 clean: clean-docs
 	rm -rf build/
 .PHONY: clean
