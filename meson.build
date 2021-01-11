@@ -4,6 +4,9 @@ project(
   version: '0.1.0'
 )
 
+jsonrpc_glib_proj = subproject('jsonrpc-glib')
+libjsonrpc_glib_dep = jsonrpc_glib_proj.get_variable('libjsonrpc_glib_dep')
+
 add_project_arguments([
     '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name())
   ],
@@ -19,7 +22,9 @@ executable(
   meson.project_name(),
   'src/server/LanguageServer.vala',
   dependencies: [
-    dependency('gio-unix-2.0')
+    libjsonrpc_glib_dep,
+    dependency('json-glib-1.0'),
+    dependency('gio-unix-2.0'),
   ],
   install: true
 )
