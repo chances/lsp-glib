@@ -16,10 +16,10 @@ add_project_arguments(
 )
 
 executable(
-    meson.project_name(),
-    'src/server/LanguageServer.vala',
-    dependencies: [
-        dependency('gio-unix-2.0')
-    ],
-    install: true
+  meson.project_name(),
+  'src/server/LanguageServer.vala',
+  dependencies: [
+    dependency('gio-unix-2.0')
+  ],
+  install: true
 )
