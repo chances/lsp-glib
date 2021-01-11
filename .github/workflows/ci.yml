@@ -5,6 +5,18 @@ on: [push, pull_request]
 #   - cron: '0 0 * * SUN'
 
 jobs:
+  lint:
+    name: Lint
+
+    runs-on: ubuntu-latest
+
+    container:
+      image: valalang/lint
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Lint
+      run: io.elementary.vala-lint -d .
   test:
     name: Tests
 
@@ -20,9 +32,6 @@ jobs:
       run: |
         apt update
         apt install -y
-    # TODO: Lint Vala sources
-    # - name: Lint
-    #   run: dub lint
     - name: Build
       # env:
       #   DESTDIR: out
