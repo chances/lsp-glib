@@ -4,6 +4,8 @@ project(
   version: '0.1.0'
 )
 
+# subdir('src')
+
 add_project_arguments([
     '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name())
   ],

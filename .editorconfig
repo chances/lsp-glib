@@ -12,6 +12,9 @@ end_of_line = lf
 trim_trailing_whitespace = true
 insert_final_newline = true
 
+[*.vala]
+indent_size = 4
+
 # Tab indentation (no size specified)
 [{Makefile,*.Makefile}]
 indent_style = tab
