@@ -16,7 +16,11 @@ add_project_arguments([
 )
 
 add_project_arguments(
-  ['--vapidir', join_paths(meson.current_source_dir(), 'vapi')],
+  [
+    '--vapidir', join_paths(meson.current_source_dir(), 'vapi'),
+    '--vapidir', join_paths(meson.current_build_dir(), 'subprojects', 'jsonrpc-glib', 'src'),
+    '--pkg', 'jsonrpc-glib-1.0'
+  ],
   language: 'vala'
 )
 
