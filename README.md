@@ -1,6 +1,6 @@
 # Vala Language Server Protocol
 
-<!-- ![Vala LSP CI](https://github.com/chances/vala-language-server-protocol/workflows/Vala%20LSP%20CI/badge.svg?branch=master) -->
+![Vala LSP CI](https://github.com/chances/vala-language-server-protocol/workflows/Vala%20LSP%20CI/badge.svg?branch=master)
 <!-- [![codecov](https://codecov.io/gh/chances/vala-language-server-protocol/branch/master/graph/badge.svg?token=bL2FkBtfPK)](https://codecov.io/gh/chances/vala-language-server-protocol) -->
 
 An implementation of the [Language Server Protocol](https://github.com/Microsoft/language-server-protocol) written entirely in Vala.
