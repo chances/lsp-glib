@@ -27,6 +27,7 @@ public class LanguageServer {
         handlers.add (server.add_handler ("msg", LanguageServer.msg_handler));
         server.client_accepted.connect ((s, client) => message ("Client connected"));
         server.client_closed.connect ((s, client) => message ("Client disconnected"));
+        message ("Started LSP Server.");
 
         event_loop.run ();
         message ("LSP Server stopped.");
