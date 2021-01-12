@@ -30,6 +30,7 @@ add_project_arguments(
 
 executable(
   meson.project_name(),
+  'src/client/LanguageClient.vala',
   'src/server/LanguageServer.vala',
   dependencies: [
     libjsonrpc_glib_dep,

@@ -7,7 +7,7 @@ PACKAGE_VERSION := 0.1.0
 .DEFAULT_GOAL := build/llc.snow.lsp
 all: build/llc.snow.lsp
 
-build/build.ninja:
+build/build.ninja: meson.build
 	meson build
 
 build/llc.snow.lsp: $(SOURCES) build/build.ninja
