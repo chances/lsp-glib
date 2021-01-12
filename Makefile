@@ -21,8 +21,13 @@ test:
 	@echo "TODO: Write tests"
 .PHONY: test
 
+lint: $(SOURCES)
+	io.elementary.vala-lint -d src/
+.PHONY: lint
+
 cover: $(SOURCES)
 	@echo "TODO: Write tests"
+.PHONY: cover
 
 docs:
 	#TODO: Write documentation
