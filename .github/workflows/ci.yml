@@ -1,6 +1,6 @@
 name: Vala LSP CI
 
-on: [push, pull_request]
+on: push
 #   schedule:
 #   - cron: '0 0 * * SUN'
 
@@ -31,7 +31,7 @@ jobs:
       if: runner.os == 'Linux'
       run: |
         apt update
-        apt install -y
+        apt install -y git
     - name: Build
       # env:
       #   DESTDIR: out

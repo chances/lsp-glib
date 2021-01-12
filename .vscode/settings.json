@@ -1,0 +1,4 @@
+{
+    "mesonbuild.configureOnOpen": true,
+    "mesonbuild.buildFolder": "build"
+}
