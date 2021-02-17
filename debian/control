@@ -1,0 +1,18 @@
+Source: llc.snow.lsp
+Section: x11
+Priority: optional
+Maintainer: Chance Snow <git@chancesnow.me>
+Build-Depends: debhelper (>= 9),
+               gettext,
+               gio-unix-2.0,
+               libgtk-3-dev,
+               make,
+               meson,
+               valac (>= 0.40.0)
+Standards-Version: 4.1.1
+
+Package: llc.snow.lsp
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Language Server Protocol in Vala
+ An implementation of the Language Server Protocol written entirely in Vala.
