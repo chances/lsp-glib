@@ -31,7 +31,8 @@ jobs:
       if: runner.os == 'Linux'
       run: |
         apt update
-        apt install -y git
+        apt install -y git python
+        pip install gcovr
     - name: Build
       # env:
       #   DESTDIR: out
@@ -40,9 +41,7 @@ jobs:
         ninja -C build
         ninja -C build install
     - name: Test
-      run: |
-        pip install gcovr
-        make cover
+      run: make cover
     # TODO: Upload Coverage to Codecov
     # - name: Upload Coverage to Codecov
     #   if: success()
