@@ -10,6 +10,10 @@ liblsp_glib = library(
   'lsp-glib-' + API_VERSION,
   sources,
   version: API_VERSION,
+  dependencies : dependencies,
+  vala_args: [
+    '--abi-stability'
+  ],
   install: true,
 )
 

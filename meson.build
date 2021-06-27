@@ -22,6 +22,8 @@ libjsonrpc_glib_vapidir = join_paths( meson.current_build_dir(), 'subprojects/js
 dependencies = [
   dependency('gee-0.8'),
   dependency('gio-unix-2.0'),
+  dependency('glib-2.0'),
+  dependency('gobject-2.0'),
   dependency('json-glib-1.0'),
   libjsonrpc_glib_dep,
   libjsonrpc_glib_vapi,
@@ -40,9 +42,7 @@ add_project_arguments(
   [
     '--enable-experimental',
     '--vapidir', vapi_dir,
-    '--vapidir', libjsonrpc_glib_vapidir,
-    '--pkg', 'gee-0.8',
-    '--pkg', 'jsonrpc-glib-1.0'
+    '--pkg', 'gio-2.0',
   ],
   language: 'vala'
 )
