@@ -1,6 +1,6 @@
 sources = files([
   'client/LanguageClient.vala',
-  'protocol/Header.vala',
+  'protocol.vala',
   'server/LanguageServer.vala',
 ])
 
