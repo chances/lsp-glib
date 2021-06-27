@@ -30,7 +30,7 @@ liblsp_glib_deps = [
   libjsonrpc_glib_vapi,
   meson.get_compiler('vala').find_library('posix'),
 ]
-PKGCONFIG_DEPS = ['glib-2.0', 'gobject-2.0']
+PKGCONFIG_DEPS = ['gee-0.8', 'gio-2.0', 'gio-unix-2.0', 'glib-2.0', 'gobject-2.0', 'json-glib-1.0', 'jsonrpc-glib-1.0']
 
 add_project_arguments([
     '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name())
