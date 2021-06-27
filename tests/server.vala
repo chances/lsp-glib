@@ -5,20 +5,13 @@ public int main (string[] args) {
     var server = new LanguageServer ();
 
     var event_loop = new MainLoop ();
-    var interrupt_signal = new Unix.SignalSource (Posix.Signal.INT);
-    interrupt_signal.set_callback (() => {
-        stdout.printf ("\n");
-        message ("Stopping server gracefully…");
-        // TODO: Disconnect from clients?
-        foreach (uint id in server.handlers) {
-            server.remove_handler (id);
-            server.handlers.remove (id);
-        }
+    var timeout = new TimeoutSource (2000);
+    timeout.set_callback (() => {
+        print ("Time!\n");
         event_loop.quit ();
-        return GLib.Source.REMOVE;
+        return false;
     });
-    interrupt_signal.attach (event_loop.get_context ());
-    // TODO: Add an `IOSource` to handle CLI input? (https://valadoc.org/glib-2.0/GLib.IOSource.html)
+    timeout.attach (event_loop.get_context ());
 
     // TODO: Bootstrap the server
     server.handlers.add (server.add_handler ("msg", LanguageServer.msg_handler));
