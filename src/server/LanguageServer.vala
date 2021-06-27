@@ -5,7 +5,7 @@ namespace Lsp {
     public class LanguageServer : Jsonrpc.Server {
         public ArrayList<uint> handlers { get; default = new ArrayList<uint> (); }
 
-        static void msg_handler (Jsonrpc.Server self, Jsonrpc.Client client, string method, Variant id, Variant @params) {
+        public static void msg_handler (Jsonrpc.Server self, Jsonrpc.Client client, string method, Variant id, Variant @params) {
             // TODO: LSP message handler
         }
     }
