@@ -10,11 +10,19 @@ liblsp_glib = library(
   'lsp-glib-' + API_VERSION,
   sources,
   version: API_VERSION,
-  dependencies : dependencies,
+  vala_gir: 'Lsp-' + API_VERSION + '.gir',
+  dependencies: liblsp_glib_deps,
   vala_args: [
     '--abi-stability'
   ],
   install: true,
+)
+
+liblsp_glib_dep = declare_dependency(
+              # sources: liblsp_glib_generated_headers,
+         dependencies: liblsp_glib_deps,
+            link_with: liblsp_glib,
+  include_directories: include_directories('.'),
 )
 
 if g_ir_compiler.found()

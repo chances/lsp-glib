@@ -17,9 +17,10 @@ jsonrpc_glib_proj = subproject('jsonrpc-glib', default_options: [
 ])
 libjsonrpc_glib_dep = jsonrpc_glib_proj.get_variable('libjsonrpc_glib_dep')
 libjsonrpc_glib_vapi = jsonrpc_glib_proj.get_variable('libjsonrpc_glib_vapi')
-libjsonrpc_glib_vapidir = join_paths( meson.current_build_dir(), 'subprojects/jsonrpc-glib/src' )
+libjsonrpc_glib_sources = join_paths( meson.current_build_dir(), 'subprojects/jsonrpc-glib/src' )
 
-dependencies = [
+liblsp_glib_include_dirs = include_directories('.')
+liblsp_glib_deps = [
   dependency('gee-0.8'),
   dependency('gio-unix-2.0'),
   dependency('glib-2.0'),
