@@ -31,7 +31,7 @@ jobs:
       if: runner.os == 'Linux'
       run: |
         apt update
-        apt install -y git python
+        apt install -y git python python-pip
         pip install gcovr
     - name: Build
       # env:
