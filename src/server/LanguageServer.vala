@@ -1,4 +1,5 @@
 using Gee;
+using Jsonrpc;
 
 namespace Lsp {
     // https://valadoc.org/jsonrpc-glib-1.0/Jsonrpc.Server.html

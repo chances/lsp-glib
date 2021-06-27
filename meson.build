@@ -17,13 +17,14 @@ jsonrpc_glib_proj = subproject('jsonrpc-glib', default_options: [
 ])
 libjsonrpc_glib_dep = jsonrpc_glib_proj.get_variable('libjsonrpc_glib_dep')
 libjsonrpc_glib_vapi = jsonrpc_glib_proj.get_variable('libjsonrpc_glib_vapi')
+libjsonrpc_glib_vapidir = join_paths( meson.current_build_dir(), 'subprojects/jsonrpc-glib/src' )
 
 dependencies = [
-  libjsonrpc_glib_dep,
-  libjsonrpc_glib_vapi,
-  dependency('json-glib-1.0'),
   dependency('gee-0.8'),
   dependency('gio-unix-2.0'),
+  dependency('json-glib-1.0'),
+  libjsonrpc_glib_dep,
+  libjsonrpc_glib_vapi,
   meson.get_compiler('vala').find_library('posix'),
 ]
 PKGCONFIG_DEPS = ['glib-2.0', 'gobject-2.0']
@@ -39,6 +40,9 @@ add_project_arguments(
   [
     '--enable-experimental',
     '--vapidir', vapi_dir,
+    '--vapidir', libjsonrpc_glib_vapidir,
+    '--pkg', 'gee-0.8',
+    '--pkg', 'json-glib-1.0'
   ],
   language: 'vala'
 )
