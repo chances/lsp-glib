@@ -113,6 +113,6 @@ namespace Lsp {
          * The string to be inserted. For delete operations use an
          * empty string.
          */
-        string newText;
+        string new_text;
     }
 }
