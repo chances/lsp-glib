@@ -17,16 +17,17 @@ install: build/llc.snow.lsp
 	ninja -C build install
 .PHONY: install
 
-test:
-	@echo "TODO: Write tests"
+test: build/build.ninja
+	meson test -C build
 .PHONY: test
 
 lint: $(SOURCES)
 	io.elementary.vala-lint -d src/
 .PHONY: lint
 
-cover: $(SOURCES)
-	@echo "TODO: Write tests"
+cover: test
+	meson test -C build
+	meson compile coverage
 .PHONY: cover
 
 docs:

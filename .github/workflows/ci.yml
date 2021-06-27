@@ -39,9 +39,9 @@ jobs:
         meson build
         ninja -C build
         ninja -C build install
-    # TODO: Run tests
-    # - name: Test
-    #   run: dub test --parallel --coverage
+    - name: Test
+      run: make cover
+    # TODO: Upload Coverage to Codecov
     # - name: Upload Coverage to Codecov
     #   if: success()
     #   run: bash <(curl -s https://codecov.io/bash)
