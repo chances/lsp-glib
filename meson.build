@@ -17,16 +17,20 @@ jsonrpc_glib_proj = subproject('jsonrpc-glib', default_options: [
 ])
 libjsonrpc_glib_dep = jsonrpc_glib_proj.get_variable('libjsonrpc_glib_dep')
 libjsonrpc_glib_vapi = jsonrpc_glib_proj.get_variable('libjsonrpc_glib_vapi')
+libjsonrpc_glib_sources = join_paths( meson.current_build_dir(), 'subprojects/jsonrpc-glib/src' )
 
-dependencies = [
-  libjsonrpc_glib_dep,
-  libjsonrpc_glib_vapi,
-  dependency('json-glib-1.0'),
+liblsp_glib_include_dirs = include_directories('.')
+liblsp_glib_deps = [
   dependency('gee-0.8'),
   dependency('gio-unix-2.0'),
+  dependency('glib-2.0'),
+  dependency('gobject-2.0'),
+  dependency('json-glib-1.0'),
+  libjsonrpc_glib_dep,
+  libjsonrpc_glib_vapi,
   meson.get_compiler('vala').find_library('posix'),
 ]
-PKGCONFIG_DEPS = ['glib-2.0', 'gobject-2.0']
+PKGCONFIG_DEPS = ['gee-0.8', 'gio-2.0', 'gio-unix-2.0', 'glib-2.0', 'gobject-2.0', 'json-glib-1.0', 'jsonrpc-glib-1.0']
 
 add_project_arguments([
     '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name())
@@ -47,3 +51,4 @@ add_project_arguments(
 g_ir_compiler = find_program('g-ir-compiler', required: false)
 
 subdir('src')
+subdir('tests')

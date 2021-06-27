@@ -1,4 +1,5 @@
 build/
+coverage/
 src/config.vala
 subprojects/jsonrpc-glib/
 *~

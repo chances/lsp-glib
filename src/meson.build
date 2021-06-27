@@ -10,18 +10,31 @@ liblsp_glib = library(
   'lsp-glib-' + API_VERSION,
   sources,
   version: API_VERSION,
+  vala_gir: 'Lsp-' + API_VERSION + '.gir',
+  dependencies: liblsp_glib_deps,
+  vala_args: [
+    '--abi-stability'
+  ],
   install: true,
+)
+
+liblsp_glib_dep = declare_dependency(
+              # sources: liblsp_glib_generated_headers,
+         dependencies: liblsp_glib_deps,
+            link_with: liblsp_glib,
+  include_directories: include_directories('.'),
 )
 
 if g_ir_compiler.found()
   custom_target('liblsp-glib-typelib',
     command: [
       g_ir_compiler,
-      '--shared-library', 'liblsp-glib-@0@.so'.format (lsp_glib_version_major),
+      '--shared-library', 'liblsp-glib-@0@.so'.format (API_VERSION),
       '--output', '@OUTPUT@',
-      meson.current_build_dir() / 'LibLSP-' + API_VERSION + '.gir'
+      '--includedir', libjsonrpc_glib_sources,
+      meson.current_build_dir() / 'Lsp-' + API_VERSION + '.gir'
     ],
-    output: 'LibLSP-' + API_VERSION + '.typelib',
+    output: 'Lsp-' + API_VERSION + '.typelib',
     depends: liblsp_glib,
     install: true,
     install_dir: join_paths(get_option('libdir'), 'girepository-1.0'))
