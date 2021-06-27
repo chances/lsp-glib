@@ -4,9 +4,10 @@ project(
   version: '0.1.0'
 )
 
-vapi_dir = meson.current_source_dir() / 'vapi'
-
-# subdir('src')
+lsp_glib_version = meson.project_version().split('.')
+lsp_glib_version_major = lsp_glib_version[0].to_int()
+lsp_glib_version_minor = lsp_glib_version[1].to_int()
+lsp_glib_version_patch = lsp_glib_version[2].to_int()
 
 jsonrpc_glib_proj = subproject('jsonrpc-glib', default_options: [
   'with_introspection=true',
@@ -17,29 +18,32 @@ jsonrpc_glib_proj = subproject('jsonrpc-glib', default_options: [
 libjsonrpc_glib_dep = jsonrpc_glib_proj.get_variable('libjsonrpc_glib_dep')
 libjsonrpc_glib_vapi = jsonrpc_glib_proj.get_variable('libjsonrpc_glib_vapi')
 
+dependencies = [
+  libjsonrpc_glib_dep,
+  libjsonrpc_glib_vapi,
+  dependency('json-glib-1.0'),
+  dependency('gee-0.8'),
+  dependency('gio-unix-2.0'),
+  meson.get_compiler('vala').find_library('posix'),
+]
+PKGCONFIG_DEPS = ['glib-2.0', 'gobject-2.0']
+
 add_project_arguments([
     '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name())
   ],
   language: 'c',
 )
 
+vapi_dir = meson.current_source_dir() / 'vapi'
 add_project_arguments(
-  ['--vapidir', vapi_dir],
+  [
+    '--enable-experimental',
+    '--vapidir', vapi_dir,
+  ],
   language: 'vala'
 )
 
-executable(
-  meson.project_name(),
-  'src/client/LanguageClient.vala',
-  'src/protocol/Header.vala',
-  'src/server/LanguageServer.vala',
-  dependencies: [
-    libjsonrpc_glib_dep,
-    libjsonrpc_glib_vapi,
-    dependency('json-glib-1.0'),
-    dependency('gee-0.8'),
-    dependency('gio-unix-2.0'),
-    meson.get_compiler('vala').find_library('posix'),
-  ],
-  install: true
-)
+# GObject Introspection Generation
+g_ir_compiler = find_program('g-ir-compiler', required: false)
+
+subdir('src')
