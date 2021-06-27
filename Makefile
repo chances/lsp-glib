@@ -26,7 +26,7 @@ lint: $(SOURCES)
 .PHONY: lint
 
 cover:
-	meson coverage --reconfigure
+	meson coverage -Db_coverage=true
 	meson test -C coverage
 .PHONY: cover
 

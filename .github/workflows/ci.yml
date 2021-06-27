@@ -41,7 +41,7 @@ jobs:
         ninja -C build
         ninja -C build install
     - name: Test
-      run: make cover
+      run: make test
     # TODO: Upload Coverage to Codecov
     # - name: Upload Coverage to Codecov
     #   if: success()
