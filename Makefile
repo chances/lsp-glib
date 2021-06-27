@@ -7,7 +7,7 @@ PACKAGE_VERSION := 0.1.0
 .DEFAULT_GOAL := build/llc.snow.lsp
 all: build/llc.snow.lsp
 
-build/build.ninja:
+build/build.ninja: meson.build
 	meson build
 
 build/llc.snow.lsp: $(SOURCES) build/build.ninja
@@ -17,16 +17,17 @@ install: build/llc.snow.lsp
 	ninja -C build install
 .PHONY: install
 
-test:
-	@echo "TODO: Write tests"
+test: build/build.ninja
+	meson test -C build
 .PHONY: test
 
 lint: $(SOURCES)
 	io.elementary.vala-lint -d src/
 .PHONY: lint
 
-cover: $(SOURCES)
-	@echo "TODO: Write tests"
+cover:
+	meson coverage -Db_coverage=true
+	meson test -C coverage
 .PHONY: cover
 
 docs:

@@ -31,7 +31,8 @@ jobs:
       if: runner.os == 'Linux'
       run: |
         apt update
-        apt install -y git
+        apt install -y git python python-pip
+        pip install gcovr
     - name: Build
       # env:
       #   DESTDIR: out
@@ -39,9 +40,9 @@ jobs:
         meson build
         ninja -C build
         ninja -C build install
-    # TODO: Run tests
-    # - name: Test
-    #   run: dub test --parallel --coverage
+    - name: Test
+      run: make test
+    # TODO: Upload Coverage to Codecov
     # - name: Upload Coverage to Codecov
     #   if: success()
     #   run: bash <(curl -s https://codecov.io/bash)
