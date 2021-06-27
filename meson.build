@@ -43,7 +43,6 @@ add_project_arguments(
   [
     '--enable-experimental',
     '--vapidir', vapi_dir,
-    '--pkg', 'gio-2.0',
   ],
   language: 'vala'
 )
