@@ -40,7 +40,9 @@ jobs:
         ninja -C build
         ninja -C build install
     - name: Test
-      run: make cover
+      run: |
+        pip install gcovr
+        make cover
     # TODO: Upload Coverage to Codecov
     # - name: Upload Coverage to Codecov
     #   if: success()

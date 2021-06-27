@@ -25,9 +25,9 @@ lint: $(SOURCES)
 	io.elementary.vala-lint -d src/
 .PHONY: lint
 
-cover: test
-	meson test -C build
-	meson compile coverage
+cover:
+	meson coverage --reconfigure
+	meson test -C coverage
 .PHONY: cover
 
 docs:
