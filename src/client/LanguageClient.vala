@@ -1,5 +1,3 @@
-using Jsonrpc;
-
 namespace Lsp {
     public class LanguageClient : Jsonrpc.Client {
         public LanguageClient (IOStream io_stream) {

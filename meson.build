@@ -42,7 +42,7 @@ add_project_arguments(
     '--vapidir', vapi_dir,
     '--vapidir', libjsonrpc_glib_vapidir,
     '--pkg', 'gee-0.8',
-    '--pkg', 'json-glib-1.0'
+    '--pkg', 'jsonrpc-glib-1.0'
   ],
   language: 'vala'
 )
